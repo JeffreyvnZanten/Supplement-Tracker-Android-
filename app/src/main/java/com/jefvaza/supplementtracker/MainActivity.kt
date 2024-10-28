@@ -7,16 +7,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.view.WindowCompat
 
 class MainActivity : ComponentActivity() {
-    private lateinit var viewModel: SupplementViewModel
+    private lateinit var supplementViewModel: SupplementViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val dao = SupplementsDatabase.getDatabase(applicationContext).supplementDao()
-        viewModel = SupplementViewModel(dao)
+        val supplementsRepository = SupplementRepository(dao)
+        supplementViewModel = SupplementViewModel(supplementsRepository)
+
         enableEdgeToEdge()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
-            SupplementApp(viewModel)
+            SupplementApp(supplementViewModel)
         }
     }
 }

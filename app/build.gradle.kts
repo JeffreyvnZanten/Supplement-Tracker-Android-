@@ -53,6 +53,7 @@ android {
 dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.ui.test.android)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -62,6 +63,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,4 +71,23 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+}
+
+// Add this at the bottom of app/build.gradle.kts
+tasks.register("combineKotlinFiles") {
+    doLast {
+        val outputDir = File("${project.buildDir}/combined")
+        outputDir.mkdirs()
+        val outputFile = File(outputDir, "combined_output.kt")
+        outputFile.writeText("")  // Clear/create file
+
+        fileTree("src/main").matching {
+            include("**/*.kt")
+        }.forEach { file ->
+            outputFile.appendText("// Source: ${file.path}\n")
+            outputFile.appendText(file.readText() + "\n\n")
+        }
+
+        println("Combined files written to: ${outputFile.absolutePath}")
+    }
 }
