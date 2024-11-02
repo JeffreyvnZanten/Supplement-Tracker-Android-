@@ -1,10 +1,9 @@
-# Scherm 1
-![Scherm 1](https://i.imgur.com/aJSSL5E.png)
-# Scherm 2
-![Scherm 2](https://i.imgur.com/IppysZi.png)
-# Scherm 3
-![Scherm 3](https://i.imgur.com/JVENdmW.png)
-# Scherm 4
-![Scherm 4](https://i.imgur.com/P1OG6XC.png)
-# Scherm 5
-![Scherm 5](https://i.imgur.com/q6CxvkG.png)
+<div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+    <img src="https://i.imgur.com/aJSSL5E.png" alt="Alt Text" width="300" height="600" />
+    <img src="https://i.imgur.com/IppysZi.png" alt="Alt Text" width="300" height="600" />
+    <img src="https://i.imgur.com/JVENdmW.png" alt="Alt Text" width="300" height="600" />
+    <img src="https://i.imgur.com/P1OG6XC.png" alt="Alt Text" width="300" height="600" />
+    <img src="https://i.imgur.com/q6CxvkG.png" alt="Alt Text" width="300" height="600" />
+</div>
+
+
